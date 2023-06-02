@@ -12,7 +12,7 @@ resource "aws_security_group" "fallback" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "ssh" {
-  depends_on = [aws_security_group.fallback]
+  count = var.security_group_id == "" ? 1 : 0
 
   security_group_id = aws_security_group.fallback[0].id
 
@@ -28,7 +28,7 @@ resource "aws_vpc_security_group_ingress_rule" "ssh" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "all" {
-  depends_on = [aws_security_group.fallback]
+  count = var.security_group_id == "" ? 1 : 0
 
   security_group_id = aws_security_group.fallback[0].id
 
