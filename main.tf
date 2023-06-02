@@ -6,7 +6,7 @@ module "instance" {
   instance_count = local.instance_count
 
   security_group_id = ""
-  create_ssm_role = "true"
+  create_ssm_role   = "true"
 }
 
 locals {

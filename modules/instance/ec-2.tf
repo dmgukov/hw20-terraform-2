@@ -1,10 +1,10 @@
 resource "aws_instance" "this" {
 
-  count         = var.instance_count
+  count = var.instance_count
 
-  ami           = data.aws_ami.amazonlinux2.id
+  ami = data.aws_ami.amazonlinux2.id
 
-  user_data     = file("${path.module}/user.sh")
+  user_data = file("${path.module}/user.sh")
 
   instance_type = var.type
 
@@ -12,8 +12,8 @@ resource "aws_instance" "this" {
     volume_size = var.disk_size
     volume_type = var.disk_type
   }
-  
-  key_name      = var.key_name
+
+  key_name = var.key_name
 
   tags = {
     Name = var.instance_count == 1 ? var.name : "${var.name}-${count.index}"

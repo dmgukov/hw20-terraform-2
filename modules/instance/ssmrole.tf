@@ -24,7 +24,7 @@ resource "aws_iam_role" "ssm_role" {
 
 resource "aws_iam_role_policy_attachment" "ssm_role_policy_attachment" {
   count = var.create_ssm_role == "true" ? 1 : 0
-  
+
   role       = aws_iam_role.ssm_role[0].name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }

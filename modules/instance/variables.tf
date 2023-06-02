@@ -1,10 +1,10 @@
 variable "type" {
-  type = string
+  type    = string
   default = "t3.micro"
 }
 
 variable "instance_count" {
-  type = number
+  type    = number
   default = 1
 }
 
@@ -17,31 +17,31 @@ variable "name" {
 }
 
 variable "security_group_id" {
-  type = string
+  type    = string
   default = ""
 
   validation {
-    condition = var.security_group_id == "" || startswith(var.security_group_id, "sg-")
+    condition     = var.security_group_id == "" || startswith(var.security_group_id, "sg-")
     error_message = "Security Group Id must start with the prefix sg-."
   }
 }
 
 variable "disk_size" {
-  type = number
+  type    = number
   default = 8
 }
 
 variable "disk_type" {
-  type = string
+  type    = string
   default = "gp3"
 
   validation {
-    condition = var.disk_type == "gp2" || var.disk_type == "gp3" || var.disk_type == "standard"
+    condition     = var.disk_type == "gp2" || var.disk_type == "gp3" || var.disk_type == "standard"
     error_message = "Valid disk types are gp2, gp3 or standard."
   }
 }
 
 variable "create_ssm_role" {
-  type = string
+  type    = string
   default = "false"
 }
